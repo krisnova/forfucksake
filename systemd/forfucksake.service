@@ -1,0 +1,8 @@
+[Unit]
+Description="The ForFuckSake Service for the Novix distributed filesystem"
+
+[Service]
+ExecStart=/usr/bin/forfucksake
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,32 @@
+#!/bin/bash
+echo "Starting ForFuckSake..."
+FFSDir="/ffs"
+#
+# Find UID and GUID with
+#   $: id -u <user>
+#   $: id -g <group>
+#   $: id <user/group>
+FFSUser="1000"
+FFSGroup="1000"
+FFSRemote="novix@nivenly.com:/data"
+FFSSSHFSFlags="-d -o reconnect -o uid=${FFSUser} -o gid=${FFSGroup} -o umask=003  -o allow_other -o auto_unmount"
+#
+# Init section
+#
+# This is the "connect" and "mount" section
+if ! command -v sshfs &> /dev/null; then
+  echo "!! sshfs does not exist !! "
+  exit 2
+fi
+echo "Command sshfs found..."
+echo "Ensuring ${FFSDir}..."
+mkdir -p ${FFSDir}
+echo "Mounting..."
+echo "Flags: "
+echo ${FFSSSHFSFlags}
+sshfs ${FFSSSHFSFlags} ${FFSRemote} ${FFSDir}
+#
+# Hang while read/write to /ffs
+#
+# Exit 1
+exit 1
