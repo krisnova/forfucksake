@@ -1,10 +1,9 @@
-
-
 all:
 	@echo "building..."
 
 
 install:
 	@echo "installing..."
-	cp ./systemd/forfucksake.service /lib/systemd/system/forfucksake.service
-	cp ./forfucksake /usr/bin/forfucksake
+	cp -v ./systemd/forfucksake.service /lib/systemd/system/forfucksake.service
+	cp -v ./forfucksake /usr/bin/forfucksake
+	cp -v ./ffs /usr/bin/ffs

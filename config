@@ -1,7 +1,10 @@
 #!/bin/bash
 
-echo "Config..."
+if ! command -v sshfs &> /dev/null
+then
+    echo "Dependency not met: [sshfs]"
+    exit
+fi
 echo
-echo "make"
-echo "sudo make install"
+echo "Success."
 echo
